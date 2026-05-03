@@ -1,6 +1,6 @@
 # Welcome to the FluxInside Repository!
 
-<img width="1536" height="1536" alt="fluxinside" src="https://github.com/user-attachments/assets/a765ad93-bec7-486d-8058-b8533469098d" />
+<img width="256" height="256" alt="fluxinsidesmall" src="https://github.com/user-attachments/assets/3eccba1c-3614-4de8-99e1-0afc5f2c78cc" />
 
 ## FluxInside: Intracellular Flux Balance Analysis Addon
 
