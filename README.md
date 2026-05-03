@@ -1,10 +1,10 @@
-# Welcome to the FlowsInside Repository!
+# Welcome to the FluxInside Repository!
 
-![flowsinside](https://github.com/user-attachments/assets/f4bebed2-2a9c-4a49-8748-034ff456319b)
+![FluxInside](https://github.com/user-attachments/assets/f4bebed2-2a9c-4a49-8748-034ff456319b)
 
-## FlowsInside: Intracellular Flux Balance Analysis Addon
+## FluxInside: Intracellular Flux Balance Analysis Addon
 
-FlowsInside is an intracellular Flux Balance Analysis (FBA) addon designed to integrate with agent-based modeling platforms such as PhysiCell. It provides a biologically grounded way to couple genome-scale metabolic models with dynamic cell simulations, allowing cells to compute metabolic fluxes internally and influence their growth, proliferation, and survival.
+FluxInside is an intracellular Flux Balance Analysis (FBA) addon designed to integrate with agent-based modeling platforms such as PhysiCell. It provides a biologically grounded way to couple genome-scale metabolic models with dynamic cell simulations, allowing cells to compute metabolic fluxes internally and influence their growth, proliferation, and survival.
 
 ✨ Features
 
@@ -30,5 +30,5 @@ Developed by Burak ÖZYÜREK from [pirism lab](https://pirismlab.org/) under the
 
 If you use this addon in scientific work, please cite:
 
-Burak ÖZYÜREK, FlowsInside: Intracellular Flux Balance Analysis Addon.
-GitHub repository, https://github.com/burakozyurek/FlowsInside.git
+Burak ÖZYÜREK, FluxInside: Intracellular Flux Balance Analysis Addon.
+GitHub repository, https://github.com/burakozyurek/FluxInside.git
