@@ -5,25 +5,20 @@
 # User Manual
 
 # 1. Overview
-
 FluxInside is a high-performance **Flux Balance Analysis (FBA)** extension designed for **Agent-Based Models (ABMs)**. It enables researchers to integrate constraint-based metabolic calculations into ABMs, allowing metabolically aware simulations for individual agents.
 
 FluxInside utilizes the **GNU Linear Programming Kit (GLPK)** to solve linear programming optimization problems efficiently.
 
 # 2. Requirements
-
 Although FluxInside is primarily designed for agent-based modeling platforms, it can also be used as a standalone C++ library by following a similar integration approach.
 
 ### Dependencies
 
-- **GLPK (GNU Linear Programming Kit)**
-  - Linear programming solver.
+- **GLPK (GNU Linear Programming Kit)** Linear programming solver.
 
-- **Matio**
-  - Library for reading MATLAB (`.mat`) files directly into memory.
+- **Matio** Library for reading MATLAB (`.mat`) files directly into memory.
 
 # 3. Installation
-
 Clone or download FluxInside from its GitHub repository:
 
 > https://github.com/burakozyurek/FluxInside
@@ -35,9 +30,7 @@ Include the FluxInside source files in your C++ project and import the library u
 ```
 
 # 4. Implementation
-
 ## Supported Model Files
-
 FluxInside does not currently provide tools to construct genome-scale metabolic models (GEMs) from scratch.
 
 Models should first be prepared using external software such as:
@@ -67,7 +60,6 @@ The model must contain the following data:
 FluxInside automatically detects whether the stoichiometric matrix is **dense** or **sparse**. Sparse matrices are internally converted into GLPK's triplet representation during model loading.
 
 ## IntracellularFBA Class
-
 ### `buildModelFromMat(const char* file_path)`
 
 Reads the structural components of a GEM from a MATLAB file and constructs the internal GLPK model.
@@ -122,13 +114,10 @@ Returns the optimized flux value for a specified reaction.
 
 
 # 5. Integrating with PhysiCell & BioFVM
-
 ## Step 1 — Install PhysiCell
-
 Download and install PhysiCell following its official documentation.
 
 ## Step 2 — Create a Template Project
-
 Inside the PhysiCell root directory:
 
 ```bash
@@ -139,26 +128,20 @@ make template
 make
 ```
 
-## Step 3 — Copy FluxInside
-
-Copy the FluxInside files
+## Step 3 — Copy FluxInside Folder
+Copy the FluxInside folder containing following files
 
 ```
 intracellularFBA.h
 intracellularFBA.hpp
 ```
 
-into one of the following folders (recommended):
+into the following folder:
 
 ```
 ./addons/
 ```
 
-or
-
-```
-./custom_modules/
-```
 
 Also place your metabolic model (`.mat`) inside:
 
@@ -167,13 +150,11 @@ Also place your metabolic model (`.mat`) inside:
 ```
 
 ## Step 4 — Include FluxInside
-
 ```cpp
 #include "../addons/FluxInside/intracellularFBA.hpp"
 ```
 
 ## Step 5 — Modify the Makefile
-
 Append the following linker flags near the compile command (approximately line 77):
 
 ```make
@@ -181,7 +162,6 @@ Append the following linker flags near the compile command (approximately line 7
 ```
 
 ## Step 6 — Create a Global FBA Object
-
 ```cpp
 IntracellularFBA ecoli_fba;
 
@@ -190,7 +170,6 @@ static std::mutex fba_mutex;
 
 
 ## Step 7 — Load the GEM
-
 Inside `create_cell_types()` (recommended):
 
 ```cpp
@@ -200,7 +179,6 @@ ecoli_fba.buildModelFromMat("../config/ecolimat.mat");
 > **Recommendation:** Load the model only once during initialization to avoid unnecessary file parsing and model reconstruction.
 
 ## Step 8 — Compile
-
 ```bash
 make
 
@@ -208,7 +186,6 @@ make
 ```
 
 ## Expected Initialization Output
-
 ```
 Executable name is project
 
@@ -258,7 +235,6 @@ Optimization took 0.0018423 seconds.
 ```
 
 ## Running FBA During Simulation
-
 Inside a phenotype function:
 
 ```cpp
@@ -281,16 +257,10 @@ std::cout
 ```
 
 ## Example Output
-
 ```
+...
 current simulated time: 540 min (max: 7200 min)
-
 total agents: 5
-
-interval wall time:
-0 days, 0 hours, 0 minutes,
-and 0.479337 seconds
-
 total wall time:
 0 days, 0 hours, 0 minutes,
 and 4.31966 seconds
@@ -300,27 +270,22 @@ Biomass for cell 1: 0.0257217
 Biomass for cell 2: -0.0568624
 Biomass for cell 3: 0.129544
 Biomass for cell 4: 0.215374
-
 Biomass for cell 0: 0.146727
 Biomass for cell 1: -0.0560702
 Biomass for cell 2: -0.0036188
 Biomass for cell 3: 0.25905
 Biomass for cell 4: 0.230496
-
 Biomass for cell 0: 0.0845726
 Biomass for cell 1: 0.0178405
 Biomass for cell 2: 0.226161
 Biomass for cell 3: 0.0139243
 Biomass for cell 4: 0.160807
-
 Biomass for cell 0: 0.00896789
 ...
 ```
 
 # 6. Troubleshooting & Known Issues
-
 ## Numerical Instability with Warm Starts
-
 Large genome-scale metabolic models such as **HumanGEM** may gradually accumulate numerical instability when repeatedly solved using warm starts without resetting the internal LP state.
 
 This behavior has **not** been observed in smaller models such as:
