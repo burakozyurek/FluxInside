@@ -136,7 +136,7 @@ intracellularFBA.h
 intracellularFBA.hpp
 ```
 
-into the following folder:
+into the following folder(recomended):
 
 ```
 ./addons/
@@ -178,11 +178,9 @@ ecoli_fba.buildModelFromMat("../config/ecolimat.mat");
 
 > **Recommendation:** Load the model only once during initialization to avoid unnecessary file parsing and model reconstruction.
 
-## Step 8 — Compile
+## Step 8 — Compile and run
 ```bash
-make
-
-./project
+make; ./project
 ```
 
 ## Expected Initialization Output
@@ -220,8 +218,6 @@ Field 13: b
 Field 14: c
 Field 15: rev
 Field 16: description
-
-Unable to open file for writing: reaction_bounds.csv
 
 Dense matrix detected.
 
@@ -261,9 +257,7 @@ std::cout
 ...
 current simulated time: 540 min (max: 7200 min)
 total agents: 5
-total wall time:
-0 days, 0 hours, 0 minutes,
-and 4.31966 seconds
+total wall time: 0 days, 0 hours, 0 minutes,and 4.31966 seconds
 
 Biomass for cell 0: 0.00458103
 Biomass for cell 1: 0.0257217
@@ -290,7 +284,7 @@ Large genome-scale metabolic models such as **HumanGEM** may gradually accumulat
 
 This behavior has **not** been observed in smaller models such as:
 
-- E. coli Core
+- Ecoli_Core
 - Yeast8
 
 ### Resolution
