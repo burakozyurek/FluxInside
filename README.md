@@ -18,13 +18,7 @@ FluxInside is an intracellular Flux Balance Analysis (FBA) addon designed to int
 
 📂 File-based Models: Load genome-scale metabolic models: MATLAB .mat file.
 
-🚀 Installation
-
-📖 Manual: [link](https://github.com/burakozyurek/FluxInside/blob/master/manual.md)
-
-Make sure you have:
-
-GLPK and Matio Libraries.
+🚀 Installation and manual: [link](https://github.com/burakozyurek/FluxInside/blob/master/manual.md)
 
 Developed by Burak ÖZYÜREK from [pirism lab](https://pirismlab.org/) under the supervision of Ass. Prof. Pınar PİR.
 
