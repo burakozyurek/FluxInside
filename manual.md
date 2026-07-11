@@ -4,7 +4,6 @@
 
 # User Manual
 
-
 # 1. Overview
 
 FluxInside is a high-performance **Flux Balance Analysis (FBA)** extension designed for **Agent-Based Models (ABMs)**. It enables researchers to integrate constraint-based metabolic calculations into ABMs, allowing metabolically aware simulations for individual agents.
