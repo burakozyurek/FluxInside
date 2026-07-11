@@ -4,7 +4,7 @@
 
 # User Manual
 
----
+
 
 # 1. Overview
 
@@ -12,7 +12,7 @@ FluxInside is a high-performance **Flux Balance Analysis (FBA)** extension desig
 
 FluxInside utilizes the **GNU Linear Programming Kit (GLPK)** to solve linear programming optimization problems efficiently.
 
----
+
 
 # 2. Requirements
 
@@ -26,7 +26,7 @@ Although FluxInside is primarily designed for agent-based modeling platforms, it
 - **Matio**
   - Library for reading MATLAB (`.mat`) files directly into memory.
 
----
+
 
 # 3. Installation
 
@@ -40,7 +40,7 @@ Include the FluxInside source files in your C++ project and import the library u
 #include "intracellularFBA.hpp"
 ```
 
----
+
 
 # 4. Implementation
 
@@ -74,7 +74,7 @@ The model must contain the following data:
 
 FluxInside automatically detects whether the stoichiometric matrix is **dense** or **sparse**. Sparse matrices are internally converted into GLPK's triplet representation during model loading.
 
----
+
 
 ## IntracellularFBA Class
 
@@ -101,7 +101,7 @@ Reads the structural components of a GEM from a MATLAB file and constructs the i
 |------------|-------------|
 | `file_path` | Path to the `.mat` model |
 
----
+
 
 ### `changeBoundByName(const std::string& rx_name, double lb, double ub)`
 
@@ -115,7 +115,7 @@ Typically used for dynamically changing transport reaction constraints according
 | `lb` | Lower bound |
 | `ub` | Upper bound |
 
----
+
 
 ### `setObjectiveByName(const std::string& rx_name, double coef)`
 
@@ -126,19 +126,19 @@ Changes the optimization objective.
 | `rx_name` | Reaction ID |
 | `coef` | Objective coefficient (`1` = maximize, `-1` = minimize) |
 
----
+
 
 ### `optimizeModel()`
 
 Executes the GLPK simplex algorithm using a warm-start and stores the resulting flux distribution in memory.
 
----
+
 
 ### `getFluxByName(const std::string& name)`
 
 Returns the optimized flux value for a specified reaction.
 
----
+
 
 # 5. Integrating with PhysiCell & BioFVM
 
@@ -146,7 +146,7 @@ Returns the optimized flux value for a specified reaction.
 
 Download and install PhysiCell following its official documentation.
 
----
+
 
 ## Step 2 — Create a Template Project
 
@@ -160,7 +160,7 @@ make template
 make
 ```
 
----
+
 
 ## Step 3 — Copy FluxInside
 
@@ -189,7 +189,7 @@ Also place your metabolic model (`.mat`) inside:
 ./config/
 ```
 
----
+
 
 ## Step 4 — Include FluxInside
 
@@ -197,7 +197,7 @@ Also place your metabolic model (`.mat`) inside:
 #include "../addons/FluxInside/intracellularFBA.hpp"
 ```
 
----
+
 
 ## Step 5 — Modify the Makefile
 
@@ -207,7 +207,7 @@ Append the following linker flags near the compile command (approximately line 7
 -lglpk -lmatio
 ```
 
----
+
 
 ## Step 6 — Create a Global FBA Object
 
@@ -217,7 +217,7 @@ IntracellularFBA ecoli_fba;
 static std::mutex fba_mutex;
 ```
 
----
+
 
 ## Step 7 — Load the GEM
 
@@ -229,7 +229,7 @@ ecoli_fba.buildModelFromMat("../config/ecolimat.mat");
 
 > **Recommendation:** Load the model only once during initialization to avoid unnecessary file parsing and model reconstruction.
 
----
+
 
 ## Step 8 — Compile
 
@@ -239,7 +239,7 @@ make
 ./project
 ```
 
----
+
 
 ## Expected Initialization Output
 
@@ -291,7 +291,7 @@ BIOMASS_Ecoli_core_w_GAM, obj coef: 1
 Optimization took 0.0018423 seconds.
 ```
 
----
+
 
 ## Running FBA During Simulation
 
@@ -316,7 +316,7 @@ std::cout
     << std::endl;
 ```
 
----
+
 
 ## Example Output
 
@@ -355,7 +355,7 @@ Biomass for cell 0: 0.00896789
 ...
 ```
 
----
+
 
 # 6. Troubleshooting & Known Issues
 
@@ -372,7 +372,7 @@ This behavior has **not** been observed in smaller models such as:
 
 Disable warm starts when repeatedly solving very large metabolic models.
 
----
+
 
 # Repository
 
