@@ -20,6 +20,8 @@ FluxInside is an intracellular Flux Balance Analysis (FBA) addon designed to int
 
 🚀 Installation
 
+📖 Manual: [link](https://github.com/burakozyurek/FluxInside/blob/master/manual.md)
+
 Make sure you have:
 
 GLPK and Matio Libraries.
