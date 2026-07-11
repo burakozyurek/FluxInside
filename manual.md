@@ -13,6 +13,7 @@ FluxInside utilizes the **GNU Linear Programming Kit (GLPK)** to solve linear pr
 Although FluxInside is primarily designed for agent-based modeling platforms, it can also be used as a standalone C++ library by following a similar integration approach.
 
 ### Dependencies
+Make sure following libraries are isntalled on your compiler:
 
 - **GLPK (GNU Linear Programming Kit)** Linear programming solver.
 
@@ -33,13 +34,11 @@ Include the FluxInside source files in your C++ project and import the library u
 ## Supported Model Files
 FluxInside does not currently provide tools to construct genome-scale metabolic models (GEMs) from scratch.
 
-Models should first be prepared using external software such as:
+Models should first be configured and exported as MATLAB (`.mat`) file using one of the constraint based optimization tool such as:
 
-- COBRA Toolbox
 - COBRApy
+- COBRA Toolbox
 - RAVEN Toolbox
-
-and exported as MATLAB (`.mat`) files.
 
 ### Supported MATLAB Formats
 
@@ -49,7 +48,7 @@ and exported as MATLAB (`.mat`) files.
 
 ### Required Fields
 
-The model must contain the following data:
+The model must contain the following data as indicated:
 
 - Stoichiometric matrix (`S`)
 - Lower bounds (`lb`)
@@ -63,17 +62,6 @@ FluxInside automatically detects whether the stoichiometric matrix is **dense** 
 ### `buildModelFromMat(const char* file_path)`
 
 Reads the structural components of a GEM from a MATLAB file and constructs the internal GLPK model.
-
-**Features**
-
-- Reads:
-  - Stoichiometric matrix (`S`)
-  - Lower bounds
-  - Upper bounds
-  - Objective
-  - Reaction names
-- Automatically detects dense/sparse matrices.
-- Converts sparse matrices into 1-based GLPK triplet indexing.
 
 > **Important:** This function should be called **only once** during initialization.
 
