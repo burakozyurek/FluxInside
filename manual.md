@@ -3,7 +3,7 @@
 **Author:** Burak ÖZYÜREK
 
 ## User Manual
-
+This manual prepared for minimal setup with PhysiCell. You can use our validation models to investigate advanced coupling of FluxInside and PhysiCell in the biologically grounded mathematical modelling manner.
 # 1. Overview
 FluxInside is a high-performance **Flux Balance Analysis (FBA)** extension designed for **Agent-Based Models (ABMs)**. It enables researchers to integrate constraint-based metabolic calculations into ABMs, allowing metabolically aware simulations for individual agents.
 
