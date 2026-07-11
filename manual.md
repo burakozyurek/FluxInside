@@ -102,6 +102,10 @@ Returns the optimized flux value for a specified reaction.
 
 
 # 5. Integrating with PhysiCell & BioFVM
+
+**Before we start:**
+Because the GLPK does not support multithreading, only one thread can access the linear problem in the memory at a time. Because of this we used a temporary workaround with a mutex application: While a thread is using an FBA object, the other threads will be waiting for the active thread to finish using the FBA object. While this will prevent simultaneous FBA calculations, it will allow vanilla PhysiCell functions to run at multithreaded operations. 
+
 ## Step 1 — Install PhysiCell
 Download and install PhysiCell following its official documentation.
 
