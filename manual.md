@@ -66,7 +66,6 @@ The model must contain the following data:
 
 FluxInside automatically detects whether the stoichiometric matrix is **dense** or **sparse**. Sparse matrices are internally converted into GLPK's triplet representation during model loading.
 
-
 ## IntracellularFBA Class
 
 ### `buildModelFromMat(const char* file_path)`
@@ -92,7 +91,6 @@ Reads the structural components of a GEM from a MATLAB file and constructs the i
 |------------|-------------|
 | `file_path` | Path to the `.mat` model |
 
-
 ### `changeBoundByName(const std::string& rx_name, double lb, double ub)`
 
 Updates the lower and upper bounds of a reaction without rebuilding the optimization model.
@@ -105,7 +103,6 @@ Typically used for dynamically changing transport reaction constraints according
 | `lb` | Lower bound |
 | `ub` | Upper bound |
 
-
 ### `setObjectiveByName(const std::string& rx_name, double coef)`
 
 Changes the optimization objective.
@@ -115,11 +112,9 @@ Changes the optimization objective.
 | `rx_name` | Reaction ID |
 | `coef` | Objective coefficient (`1` = maximize, `-1` = minimize) |
 
-
 ### `optimizeModel()`
 
 Executes the GLPK simplex algorithm using a warm-start and stores the resulting flux distribution in memory.
-
 
 ### `getFluxByName(const std::string& name)`
 
@@ -132,7 +127,6 @@ Returns the optimized flux value for a specified reaction.
 
 Download and install PhysiCell following its official documentation.
 
-
 ## Step 2 — Create a Template Project
 
 Inside the PhysiCell root directory:
@@ -144,7 +138,6 @@ make template
 
 make
 ```
-
 
 ## Step 3 — Copy FluxInside
 
@@ -173,13 +166,11 @@ Also place your metabolic model (`.mat`) inside:
 ./config/
 ```
 
-
 ## Step 4 — Include FluxInside
 
 ```cpp
 #include "../addons/FluxInside/intracellularFBA.hpp"
 ```
-
 
 ## Step 5 — Modify the Makefile
 
@@ -188,7 +179,6 @@ Append the following linker flags near the compile command (approximately line 7
 ```make
 -lglpk -lmatio
 ```
-
 
 ## Step 6 — Create a Global FBA Object
 
@@ -209,7 +199,6 @@ ecoli_fba.buildModelFromMat("../config/ecolimat.mat");
 
 > **Recommendation:** Load the model only once during initialization to avoid unnecessary file parsing and model reconstruction.
 
-
 ## Step 8 — Compile
 
 ```bash
@@ -217,7 +206,6 @@ make
 
 ./project
 ```
-
 
 ## Expected Initialization Output
 
@@ -269,7 +257,6 @@ BIOMASS_Ecoli_core_w_GAM, obj coef: 1
 Optimization took 0.0018423 seconds.
 ```
 
-
 ## Running FBA During Simulation
 
 Inside a phenotype function:
@@ -292,7 +279,6 @@ std::cout
     << ecoli_fba.getFluxByName("BIOMASS_Ecoli_core_w_GAM")
     << std::endl;
 ```
-
 
 ## Example Output
 
@@ -331,7 +317,6 @@ Biomass for cell 0: 0.00896789
 ...
 ```
 
-
 # 6. Troubleshooting & Known Issues
 
 ## Numerical Instability with Warm Starts
@@ -346,7 +331,6 @@ This behavior has **not** been observed in smaller models such as:
 ### Resolution
 
 Disable warm starts when repeatedly solving very large metabolic models.
-
 
 # Repository
 
